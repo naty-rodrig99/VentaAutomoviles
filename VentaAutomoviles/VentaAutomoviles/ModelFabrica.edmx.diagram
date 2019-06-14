@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2fb2267e8b72444e9cc0b965116cfa00" Name="Diagram1">
+        <EntityTypeShape EntityType="FabricaModel.Automovil" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.Caracteristica" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.CaracteristicasxAutomovil" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.Cliente" Width="1.5" PointX="7.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.ClienteCredenciale" Width="1.5" PointX="5.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.ClienteUbicacion" Width="1.5" PointX="12.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.EmpleadoFabrica" Width="1.5" PointX="10" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.Extra" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.ExtraxAutomovil" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.Fabrica" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.Foto" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.FotoxAutomovil" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.PedidoSucursal1" Width="1.5" PointX="13" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.PedidoSucursal2" Width="1.5" PointX="10" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.PedidoSucursal3" Width="1.5" PointX="10" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.TipoAutomovil" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricaModel.TipoCombustible" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="FabricaModel.FK_Automovil_TipoAutomovil" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_Automovil_TipoCombustible" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_CaracteristicasxAutomovil_Automovil" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_ExtraxAutomovil_Automovil" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_FotoxAutomovil_Automovil" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_CaracteristicasxAutomovil_Caracteristicas" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal1_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal2_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal3_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_EmpleadoFabrica_Fabrica" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_ExtraxAutomovil_Extra" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal1_Fabrica" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal2_Fabrica" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_PedidoSucursal3_Fabrica" ManuallyRouted="false" />
+        <AssociationConnector Association="FabricaModel.FK_FotoxAutomovil_Foto" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

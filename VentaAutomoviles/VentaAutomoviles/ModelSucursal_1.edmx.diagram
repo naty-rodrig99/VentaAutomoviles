@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c347ac3450645e8a277a5d47a5fc463" Name="Diagram1">
+        <EntityTypeShape EntityType="Sucursal_1Model.AutomovilxSucursal" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.AutoxSucxVentaxCli" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.ClientexFinanciamiento" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Detalle" Width="1.5" PointX="11" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.DetallexFactura" Width="1.5" PointX="13.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Empleado" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.EmpleadoxSucursal" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Factura" Width="1.5" PointX="11" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Financiamiento" Width="1.5" PointX="5.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Pago" Width="1.5" PointX="8" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.PagoxClientexFinanciamiento" Width="1.5" PointX="10.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Sucursal" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.SucursalUbicacion" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.sysdiagram" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.TipoPago" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.Venta" Width="1.5" PointX="8" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Sucursal_1Model.VentaxCliente" Width="1.5" PointX="10.25" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="Sucursal_1Model.FK_AutomovilxSucursal_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_Detalle_AutoxSucxVentaxCli" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_ClientexFinanciamiento_Financiamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_PagoxClientexFinanciamiento_ClientexFinanciamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_DetallexFactura_Detalle" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_DetallexFactura_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_EmpleadoxSucursal_Empleado" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_EmpleadoxSucursal_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_PagoxClientexFinanciamiento_Pago" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_SucursalUbicacion_Sucursal" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_Venta_TipoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="Sucursal_1Model.FK_VentaxCliente_Venta" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

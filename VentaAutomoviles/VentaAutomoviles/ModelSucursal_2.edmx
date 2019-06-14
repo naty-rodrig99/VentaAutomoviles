@@ -1,0 +1,939 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Sucursal_2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutomovilxSucursal">
+          <Key>
+            <PropertyRef Name="idAutomovilxSucursal" />
+          </Key>
+          <Property Name="idAutomovilxSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSucursal" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="idAutomovil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutxSucxVentxCli">
+          <Key>
+            <PropertyRef Name="idAutxSucxVentxCli" />
+          </Key>
+          <Property Name="idAutxSucxVentxCli" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="int" Nullable="false" />
+          <Property Name="idVentaxCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientexFinanciamiento">
+          <Key>
+            <PropertyRef Name="idClientexFinanciamiento" />
+          </Key>
+          <Property Name="idClientexFinanciamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFinanciamiento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalle">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAutxSucVentxCli" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetallexFactura">
+          <Key>
+            <PropertyRef Name="idDetallexFactura" />
+          </Key>
+          <Property Name="idDetallexFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDetalle" Type="int" Nullable="false" />
+          <Property Name="idFactura" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpleadoxSucursal">
+          <Key>
+            <PropertyRef Name="idEmpleadoxSucursal" />
+          </Key>
+          <Property Name="idEmpleadoxSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
+          <Property Name="idSucursal" Type="int" Nullable="false" />
+          <Property Name="fechaContratacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descuento" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Financiamiento">
+          <Key>
+            <PropertyRef Name="idFinanciamiento" />
+          </Key>
+          <Property Name="idFinanciamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tasaInteres" Type="float" Nullable="false" />
+          <Property Name="plazo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPago" />
+          </Key>
+          <Property Name="idPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="monto" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagoxClientexFinanciamiento">
+          <Key>
+            <PropertyRef Name="idPagoxClientexFinanciamiento" />
+          </Key>
+          <Property Name="idPagoxClientexFinanciamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idPago" Type="int" Nullable="false" />
+          <Property Name="idClientexFinanciamiento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="idSucursal" />
+          </Key>
+          <Property Name="idSucursal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="horaEntrada" Type="time" Precision="7" Nullable="false" />
+          <Property Name="horaSalida" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SucursalUbicacion">
+          <Key>
+            <PropertyRef Name="idSucursalUbicacion" />
+          </Key>
+          <Property Name="idSucursalUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idSucursal" Type="int" />
+          <Property Name="ubicacion" Type="geometry" Nullable="false" />
+          <Property Name="pais" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tipoPago">
+          <Key>
+            <PropertyRef Name="idTipoPago" />
+          </Key>
+          <Property Name="idTipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="idVenta" />
+          </Key>
+          <Property Name="idVenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoPago" Type="int" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="monto" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VentasxCliente">
+          <Key>
+            <PropertyRef Name="idVentaxCliente" />
+          </Key>
+          <Property Name="idVentaxCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idVenta" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Automovil__idSuc__5441852A">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="AutomovilxSucursal" Type="Self.AutomovilxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="AutomovilxSucursal">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AutxSucxV__idAut__5535A963">
+          <End Role="AutomovilxSucursal" Type="Self.AutomovilxSucursal" Multiplicity="1" />
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutomovilxSucursal">
+              <PropertyRef Name="idAutomovilxSucursal" />
+            </Principal>
+            <Dependent Role="AutxSucxVentxCli">
+              <PropertyRef Name="idAutomovilxSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AutxSucxV__idVen__5629CD9C">
+          <End Role="VentasxCliente" Type="Self.VentasxCliente" Multiplicity="1" />
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentasxCliente">
+              <PropertyRef Name="idVentaxCliente" />
+            </Principal>
+            <Dependent Role="AutxSucxVentxCli">
+              <PropertyRef Name="idVentaxCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientexF__idFin__571DF1D5">
+          <End Role="Financiamiento" Type="Self.Financiamiento" Multiplicity="1" />
+          <End Role="ClientexFinanciamiento" Type="Self.ClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Financiamiento">
+              <PropertyRef Name="idFinanciamiento" />
+            </Principal>
+            <Dependent Role="ClientexFinanciamiento">
+              <PropertyRef Name="idFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__idAutxS__5812160E">
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutxSucxVentxCli">
+              <PropertyRef Name="idAutxSucxVentxCli" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="idAutxSucVentxCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallexF__idDet__59063A47">
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="1" />
+          <End Role="DetallexFactura" Type="Self.DetallexFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detalle">
+              <PropertyRef Name="idDetalle" />
+            </Principal>
+            <Dependent Role="DetallexFactura">
+              <PropertyRef Name="idDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallexF__idFac__59FA5E80">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="DetallexFactura" Type="Self.DetallexFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="DetallexFactura">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleadox__idEmp__5AEE82B9">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoxSucursal" Type="Self.EmpleadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="EmpleadoxSucursal">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleadox__idSuc__5BE2A6F2">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="EmpleadoxSucursal" Type="Self.EmpleadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="EmpleadoxSucursal">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagoxClie__idCli__5CD6CB2B">
+          <End Role="ClientexFinanciamiento" Type="Self.ClientexFinanciamiento" Multiplicity="1" />
+          <End Role="PagoxClientexFinanciamiento" Type="Self.PagoxClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientexFinanciamiento">
+              <PropertyRef Name="idClientexFinanciamiento" />
+            </Principal>
+            <Dependent Role="PagoxClientexFinanciamiento">
+              <PropertyRef Name="idClientexFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagoxClie__idPag__5DCAEF64">
+          <End Role="Pago" Type="Self.Pago" Multiplicity="1" />
+          <End Role="PagoxClientexFinanciamiento" Type="Self.PagoxClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="idPago" />
+            </Principal>
+            <Dependent Role="PagoxClientexFinanciamiento">
+              <PropertyRef Name="idPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SucursalU__idSuc__5EBF139D">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="SucursalUbicacion" Type="Self.SucursalUbicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="SucursalUbicacion">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentasxCl__idVen__5FB337D6">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="VentasxCliente" Type="Self.VentasxCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="idVenta" />
+            </Principal>
+            <Dependent Role="VentasxCliente">
+              <PropertyRef Name="idVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spAgregarSucursal_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="horaEntrada" Type="time" Mode="In" />
+          <Parameter Name="horaSalida" Type="time" Mode="In" />
+          <Parameter Name="ubicacion" Type="geometry" Mode="In" />
+          <Parameter Name="pais" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Sucursal_2ModelStoreContainer">
+          <EntitySet Name="AutomovilxSucursal" EntityType="Self.AutomovilxSucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutxSucxVentxCli" EntityType="Self.AutxSucxVentxCli" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientexFinanciamiento" EntityType="Self.ClientexFinanciamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle" EntityType="Self.Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetallexFactura" EntityType="Self.DetallexFactura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadoxSucursal" EntityType="Self.EmpleadoxSucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Financiamiento" EntityType="Self.Financiamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagoxClientexFinanciamiento" EntityType="Self.PagoxClientexFinanciamiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SucursalUbicacion" EntityType="Self.SucursalUbicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tipoPago" EntityType="Self.tipoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VentasxCliente" EntityType="Self.VentasxCliente" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Automovil__idSuc__5441852A" Association="Self.FK__Automovil__idSuc__5441852A">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="AutomovilxSucursal" EntitySet="AutomovilxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AutxSucxV__idAut__5535A963" Association="Self.FK__AutxSucxV__idAut__5535A963">
+            <End Role="AutomovilxSucursal" EntitySet="AutomovilxSucursal" />
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxCli" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AutxSucxV__idVen__5629CD9C" Association="Self.FK__AutxSucxV__idVen__5629CD9C">
+            <End Role="VentasxCliente" EntitySet="VentasxCliente" />
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxCli" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientexF__idFin__571DF1D5" Association="Self.FK__ClientexF__idFin__571DF1D5">
+            <End Role="Financiamiento" EntitySet="Financiamiento" />
+            <End Role="ClientexFinanciamiento" EntitySet="ClientexFinanciamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__idAutxS__5812160E" Association="Self.FK__Detalle__idAutxS__5812160E">
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxCli" />
+            <End Role="Detalle" EntitySet="Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallexF__idDet__59063A47" Association="Self.FK__DetallexF__idDet__59063A47">
+            <End Role="Detalle" EntitySet="Detalle" />
+            <End Role="DetallexFactura" EntitySet="DetallexFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallexF__idFac__59FA5E80" Association="Self.FK__DetallexF__idFac__59FA5E80">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="DetallexFactura" EntitySet="DetallexFactura" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleadox__idEmp__5AEE82B9" Association="Self.FK__Empleadox__idEmp__5AEE82B9">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="EmpleadoxSucursal" EntitySet="EmpleadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleadox__idSuc__5BE2A6F2" Association="Self.FK__Empleadox__idSuc__5BE2A6F2">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="EmpleadoxSucursal" EntitySet="EmpleadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagoxClie__idCli__5CD6CB2B" Association="Self.FK__PagoxClie__idCli__5CD6CB2B">
+            <End Role="ClientexFinanciamiento" EntitySet="ClientexFinanciamiento" />
+            <End Role="PagoxClientexFinanciamiento" EntitySet="PagoxClientexFinanciamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagoxClie__idPag__5DCAEF64" Association="Self.FK__PagoxClie__idPag__5DCAEF64">
+            <End Role="Pago" EntitySet="Pago" />
+            <End Role="PagoxClientexFinanciamiento" EntitySet="PagoxClientexFinanciamiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SucursalU__idSuc__5EBF139D" Association="Self.FK__SucursalU__idSuc__5EBF139D">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="SucursalUbicacion" EntitySet="SucursalUbicacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentasxCl__idVen__5FB337D6" Association="Self.FK__VentasxCl__idVen__5FB337D6">
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="VentasxCliente" EntitySet="VentasxCliente" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Sucursal_2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutomovilxSucursal">
+          <Key>
+            <PropertyRef Name="idAutomovilxSucursal" />
+          </Key>
+          <Property Name="idAutomovilxSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSucursal" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="idAutomovil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Automovil__idSuc__5441852A" FromRole="AutomovilxSucursal" ToRole="Sucursal" />
+          <NavigationProperty Name="AutxSucxVentxClis" Relationship="Self.FK__AutxSucxV__idAut__5535A963" FromRole="AutomovilxSucursal" ToRole="AutxSucxVentxCli" />
+        </EntityType>
+        <EntityType Name="AutxSucxVentxCli">
+          <Key>
+            <PropertyRef Name="idAutxSucxVentxCli" />
+          </Key>
+          <Property Name="idAutxSucxVentxCli" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAutomovilxSucursal" Type="Int32" Nullable="false" />
+          <Property Name="idVentaxCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AutomovilxSucursal" Relationship="Self.FK__AutxSucxV__idAut__5535A963" FromRole="AutxSucxVentxCli" ToRole="AutomovilxSucursal" />
+          <NavigationProperty Name="VentasxCliente" Relationship="Self.FK__AutxSucxV__idVen__5629CD9C" FromRole="AutxSucxVentxCli" ToRole="VentasxCliente" />
+          <NavigationProperty Name="Detalles" Relationship="Self.FK__Detalle__idAutxS__5812160E" FromRole="AutxSucxVentxCli" ToRole="Detalle" />
+        </EntityType>
+        <EntityType Name="ClientexFinanciamiento">
+          <Key>
+            <PropertyRef Name="idClientexFinanciamiento" />
+          </Key>
+          <Property Name="idClientexFinanciamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFinanciamiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Financiamiento" Relationship="Self.FK__ClientexF__idFin__571DF1D5" FromRole="ClientexFinanciamiento" ToRole="Financiamiento" />
+          <NavigationProperty Name="PagoxClientexFinanciamientoes" Relationship="Self.FK__PagoxClie__idCli__5CD6CB2B" FromRole="ClientexFinanciamiento" ToRole="PagoxClientexFinanciamiento" />
+        </EntityType>
+        <EntityType Name="Detalle">
+          <Key>
+            <PropertyRef Name="idDetalle" />
+          </Key>
+          <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAutxSucVentxCli" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AutxSucxVentxCli" Relationship="Self.FK__Detalle__idAutxS__5812160E" FromRole="Detalle" ToRole="AutxSucxVentxCli" />
+          <NavigationProperty Name="DetallexFacturas" Relationship="Self.FK__DetallexF__idDet__59063A47" FromRole="Detalle" ToRole="DetallexFactura" />
+        </EntityType>
+        <EntityType Name="DetallexFactura">
+          <Key>
+            <PropertyRef Name="idDetallexFactura" />
+          </Key>
+          <Property Name="idDetallexFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDetalle" Type="Int32" Nullable="false" />
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalle" Relationship="Self.FK__DetallexF__idDet__59063A47" FromRole="DetallexFactura" ToRole="Detalle" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__DetallexF__idFac__59FA5E80" FromRole="DetallexFactura" ToRole="Factura" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="idEmpleado" />
+          </Key>
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EmpleadoxSucursals" Relationship="Self.FK__Empleadox__idEmp__5AEE82B9" FromRole="Empleado" ToRole="EmpleadoxSucursal" />
+        </EntityType>
+        <EntityType Name="EmpleadoxSucursal">
+          <Key>
+            <PropertyRef Name="idEmpleadoxSucursal" />
+          </Key>
+          <Property Name="idEmpleadoxSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="idSucursal" Type="Int32" Nullable="false" />
+          <Property Name="fechaContratacion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleadox__idEmp__5AEE82B9" FromRole="EmpleadoxSucursal" ToRole="Empleado" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Empleadox__idSuc__5BE2A6F2" FromRole="EmpleadoxSucursal" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="Factura">
+          <Key>
+            <PropertyRef Name="idFactura" />
+          </Key>
+          <Property Name="idFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descuento" Type="Double" Nullable="false" />
+          <NavigationProperty Name="DetallexFacturas" Relationship="Self.FK__DetallexF__idFac__59FA5E80" FromRole="Factura" ToRole="DetallexFactura" />
+        </EntityType>
+        <EntityType Name="Financiamiento">
+          <Key>
+            <PropertyRef Name="idFinanciamiento" />
+          </Key>
+          <Property Name="idFinanciamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tasaInteres" Type="Double" Nullable="false" />
+          <Property Name="plazo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientexFinanciamientoes" Relationship="Self.FK__ClientexF__idFin__571DF1D5" FromRole="Financiamiento" ToRole="ClientexFinanciamiento" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="idPago" />
+          </Key>
+          <Property Name="idPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="PagoxClientexFinanciamientoes" Relationship="Self.FK__PagoxClie__idPag__5DCAEF64" FromRole="Pago" ToRole="PagoxClientexFinanciamiento" />
+        </EntityType>
+        <EntityType Name="PagoxClientexFinanciamiento">
+          <Key>
+            <PropertyRef Name="idPagoxClientexFinanciamiento" />
+          </Key>
+          <Property Name="idPagoxClientexFinanciamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idPago" Type="Int32" Nullable="false" />
+          <Property Name="idClientexFinanciamiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientexFinanciamiento" Relationship="Self.FK__PagoxClie__idCli__5CD6CB2B" FromRole="PagoxClientexFinanciamiento" ToRole="ClientexFinanciamiento" />
+          <NavigationProperty Name="Pago" Relationship="Self.FK__PagoxClie__idPag__5DCAEF64" FromRole="PagoxClientexFinanciamiento" ToRole="Pago" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="idSucursal" />
+          </Key>
+          <Property Name="idSucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="horaEntrada" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="horaSalida" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AutomovilxSucursals" Relationship="Self.FK__Automovil__idSuc__5441852A" FromRole="Sucursal" ToRole="AutomovilxSucursal" />
+          <NavigationProperty Name="EmpleadoxSucursals" Relationship="Self.FK__Empleadox__idSuc__5BE2A6F2" FromRole="Sucursal" ToRole="EmpleadoxSucursal" />
+          <NavigationProperty Name="SucursalUbicacions" Relationship="Self.FK__SucursalU__idSuc__5EBF139D" FromRole="Sucursal" ToRole="SucursalUbicacion" />
+        </EntityType>
+        <EntityType Name="SucursalUbicacion">
+          <Key>
+            <PropertyRef Name="idSucursalUbicacion" />
+          </Key>
+          <Property Name="idSucursalUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSucursal" Type="Int32" />
+          <Property Name="ubicacion" Type="Geometry" Nullable="false" />
+          <Property Name="pais" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__SucursalU__idSuc__5EBF139D" FromRole="SucursalUbicacion" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="tipoPago">
+          <Key>
+            <PropertyRef Name="idTipoPago" />
+          </Key>
+          <Property Name="idTipoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Venta">
+          <Key>
+            <PropertyRef Name="idVenta" />
+          </Key>
+          <Property Name="idVenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoPago" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="VentasxClientes" Relationship="Self.FK__VentasxCl__idVen__5FB337D6" FromRole="Venta" ToRole="VentasxCliente" />
+        </EntityType>
+        <EntityType Name="VentasxCliente">
+          <Key>
+            <PropertyRef Name="idVentaxCliente" />
+          </Key>
+          <Property Name="idVentaxCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idVenta" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AutxSucxVentxClis" Relationship="Self.FK__AutxSucxV__idVen__5629CD9C" FromRole="VentasxCliente" ToRole="AutxSucxVentxCli" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__VentasxCl__idVen__5FB337D6" FromRole="VentasxCliente" ToRole="Venta" />
+        </EntityType>
+        <Association Name="FK__Automovil__idSuc__5441852A">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="AutomovilxSucursal" Type="Self.AutomovilxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="AutomovilxSucursal">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AutxSucxV__idAut__5535A963">
+          <End Role="AutomovilxSucursal" Type="Self.AutomovilxSucursal" Multiplicity="1" />
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutomovilxSucursal">
+              <PropertyRef Name="idAutomovilxSucursal" />
+            </Principal>
+            <Dependent Role="AutxSucxVentxCli">
+              <PropertyRef Name="idAutomovilxSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AutxSucxV__idVen__5629CD9C">
+          <End Role="VentasxCliente" Type="Self.VentasxCliente" Multiplicity="1" />
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VentasxCliente">
+              <PropertyRef Name="idVentaxCliente" />
+            </Principal>
+            <Dependent Role="AutxSucxVentxCli">
+              <PropertyRef Name="idVentaxCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Detalle__idAutxS__5812160E">
+          <End Role="AutxSucxVentxCli" Type="Self.AutxSucxVentxCli" Multiplicity="1" />
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutxSucxVentxCli">
+              <PropertyRef Name="idAutxSucxVentxCli" />
+            </Principal>
+            <Dependent Role="Detalle">
+              <PropertyRef Name="idAutxSucVentxCli" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientexF__idFin__571DF1D5">
+          <End Role="Financiamiento" Type="Self.Financiamiento" Multiplicity="1" />
+          <End Role="ClientexFinanciamiento" Type="Self.ClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Financiamiento">
+              <PropertyRef Name="idFinanciamiento" />
+            </Principal>
+            <Dependent Role="ClientexFinanciamiento">
+              <PropertyRef Name="idFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagoxClie__idCli__5CD6CB2B">
+          <End Role="ClientexFinanciamiento" Type="Self.ClientexFinanciamiento" Multiplicity="1" />
+          <End Role="PagoxClientexFinanciamiento" Type="Self.PagoxClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientexFinanciamiento">
+              <PropertyRef Name="idClientexFinanciamiento" />
+            </Principal>
+            <Dependent Role="PagoxClientexFinanciamiento">
+              <PropertyRef Name="idClientexFinanciamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallexF__idDet__59063A47">
+          <End Role="Detalle" Type="Self.Detalle" Multiplicity="1" />
+          <End Role="DetallexFactura" Type="Self.DetallexFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Detalle">
+              <PropertyRef Name="idDetalle" />
+            </Principal>
+            <Dependent Role="DetallexFactura">
+              <PropertyRef Name="idDetalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetallexF__idFac__59FA5E80">
+          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+          <End Role="DetallexFactura" Type="Self.DetallexFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="idFactura" />
+            </Principal>
+            <Dependent Role="DetallexFactura">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleadox__idEmp__5AEE82B9">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="EmpleadoxSucursal" Type="Self.EmpleadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="idEmpleado" />
+            </Principal>
+            <Dependent Role="EmpleadoxSucursal">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empleadox__idSuc__5BE2A6F2">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="EmpleadoxSucursal" Type="Self.EmpleadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="EmpleadoxSucursal">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PagoxClie__idPag__5DCAEF64">
+          <End Role="Pago" Type="Self.Pago" Multiplicity="1" />
+          <End Role="PagoxClientexFinanciamiento" Type="Self.PagoxClientexFinanciamiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="idPago" />
+            </Principal>
+            <Dependent Role="PagoxClientexFinanciamiento">
+              <PropertyRef Name="idPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SucursalU__idSuc__5EBF139D">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="0..1" />
+          <End Role="SucursalUbicacion" Type="Self.SucursalUbicacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="idSucursal" />
+            </Principal>
+            <Dependent Role="SucursalUbicacion">
+              <PropertyRef Name="idSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VentasxCl__idVen__5FB337D6">
+          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
+          <End Role="VentasxCliente" Type="Self.VentasxCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Venta">
+              <PropertyRef Name="idVenta" />
+            </Principal>
+            <Dependent Role="VentasxCliente">
+              <PropertyRef Name="idVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Sucursal_2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutomovilxSucursals" EntityType="Self.AutomovilxSucursal" />
+          <EntitySet Name="AutxSucxVentxClis" EntityType="Self.AutxSucxVentxCli" />
+          <EntitySet Name="ClientexFinanciamientoes" EntityType="Self.ClientexFinanciamiento" />
+          <EntitySet Name="Detalles" EntityType="Self.Detalle" />
+          <EntitySet Name="DetallexFacturas" EntityType="Self.DetallexFactura" />
+          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
+          <EntitySet Name="EmpleadoxSucursals" EntityType="Self.EmpleadoxSucursal" />
+          <EntitySet Name="Facturas" EntityType="Self.Factura" />
+          <EntitySet Name="Financiamientoes" EntityType="Self.Financiamiento" />
+          <EntitySet Name="Pagoes" EntityType="Self.Pago" />
+          <EntitySet Name="PagoxClientexFinanciamientoes" EntityType="Self.PagoxClientexFinanciamiento" />
+          <EntitySet Name="Sucursals" EntityType="Self.Sucursal" />
+          <EntitySet Name="SucursalUbicacions" EntityType="Self.SucursalUbicacion" />
+          <EntitySet Name="tipoPagoes" EntityType="Self.tipoPago" />
+          <EntitySet Name="Ventas" EntityType="Self.Venta" />
+          <EntitySet Name="VentasxClientes" EntityType="Self.VentasxCliente" />
+          <AssociationSet Name="FK__Automovil__idSuc__5441852A" Association="Self.FK__Automovil__idSuc__5441852A">
+            <End Role="Sucursal" EntitySet="Sucursals" />
+            <End Role="AutomovilxSucursal" EntitySet="AutomovilxSucursals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AutxSucxV__idAut__5535A963" Association="Self.FK__AutxSucxV__idAut__5535A963">
+            <End Role="AutomovilxSucursal" EntitySet="AutomovilxSucursals" />
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxClis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AutxSucxV__idVen__5629CD9C" Association="Self.FK__AutxSucxV__idVen__5629CD9C">
+            <End Role="VentasxCliente" EntitySet="VentasxClientes" />
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxClis" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Detalle__idAutxS__5812160E" Association="Self.FK__Detalle__idAutxS__5812160E">
+            <End Role="AutxSucxVentxCli" EntitySet="AutxSucxVentxClis" />
+            <End Role="Detalle" EntitySet="Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientexF__idFin__571DF1D5" Association="Self.FK__ClientexF__idFin__571DF1D5">
+            <End Role="Financiamiento" EntitySet="Financiamientoes" />
+            <End Role="ClientexFinanciamiento" EntitySet="ClientexFinanciamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagoxClie__idCli__5CD6CB2B" Association="Self.FK__PagoxClie__idCli__5CD6CB2B">
+            <End Role="ClientexFinanciamiento" EntitySet="ClientexFinanciamientoes" />
+            <End Role="PagoxClientexFinanciamiento" EntitySet="PagoxClientexFinanciamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallexF__idDet__59063A47" Association="Self.FK__DetallexF__idDet__59063A47">
+            <End Role="Detalle" EntitySet="Detalles" />
+            <End Role="DetallexFactura" EntitySet="DetallexFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetallexF__idFac__59FA5E80" Association="Self.FK__DetallexF__idFac__59FA5E80">
+            <End Role="Factura" EntitySet="Facturas" />
+            <End Role="DetallexFactura" EntitySet="DetallexFacturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleadox__idEmp__5AEE82B9" Association="Self.FK__Empleadox__idEmp__5AEE82B9">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="EmpleadoxSucursal" EntitySet="EmpleadoxSucursals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empleadox__idSuc__5BE2A6F2" Association="Self.FK__Empleadox__idSuc__5BE2A6F2">
+            <End Role="Sucursal" EntitySet="Sucursals" />
+            <End Role="EmpleadoxSucursal" EntitySet="EmpleadoxSucursals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PagoxClie__idPag__5DCAEF64" Association="Self.FK__PagoxClie__idPag__5DCAEF64">
+            <End Role="Pago" EntitySet="Pagoes" />
+            <End Role="PagoxClientexFinanciamiento" EntitySet="PagoxClientexFinanciamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SucursalU__idSuc__5EBF139D" Association="Self.FK__SucursalU__idSuc__5EBF139D">
+            <End Role="Sucursal" EntitySet="Sucursals" />
+            <End Role="SucursalUbicacion" EntitySet="SucursalUbicacions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VentasxCl__idVen__5FB337D6" Association="Self.FK__VentasxCl__idVen__5FB337D6">
+            <End Role="Venta" EntitySet="Ventas" />
+            <End Role="VentasxCliente" EntitySet="VentasxClientes" />
+          </AssociationSet>
+          <FunctionImport Name="spAgregarSucursal_2">
+            <Parameter Name="horaEntrada" Mode="In" Type="Time" />
+            <Parameter Name="horaSalida" Mode="In" Type="Time" />
+            <Parameter Name="ubicacion" Mode="In" Type="Geometry" />
+            <Parameter Name="pais" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Sucursal_2ModelStoreContainer" CdmEntityContainer="Sucursal_2Entities">
+          <EntitySetMapping Name="AutomovilxSucursals">
+            <EntityTypeMapping TypeName="Sucursal_2Model.AutomovilxSucursal">
+              <MappingFragment StoreEntitySet="AutomovilxSucursal">
+                <ScalarProperty Name="idAutomovilxSucursal" ColumnName="idAutomovilxSucursal" />
+                <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="idAutomovil" ColumnName="idAutomovil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutxSucxVentxClis">
+            <EntityTypeMapping TypeName="Sucursal_2Model.AutxSucxVentxCli">
+              <MappingFragment StoreEntitySet="AutxSucxVentxCli">
+                <ScalarProperty Name="idAutxSucxVentxCli" ColumnName="idAutxSucxVentxCli" />
+                <ScalarProperty Name="idAutomovilxSucursal" ColumnName="idAutomovilxSucursal" />
+                <ScalarProperty Name="idVentaxCliente" ColumnName="idVentaxCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientexFinanciamientoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.ClientexFinanciamiento">
+              <MappingFragment StoreEntitySet="ClientexFinanciamiento">
+                <ScalarProperty Name="idClientexFinanciamiento" ColumnName="idClientexFinanciamiento" />
+                <ScalarProperty Name="idFinanciamiento" ColumnName="idFinanciamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalles">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Detalle">
+              <MappingFragment StoreEntitySet="Detalle">
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+                <ScalarProperty Name="idAutxSucVentxCli" ColumnName="idAutxSucVentxCli" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetallexFacturas">
+            <EntityTypeMapping TypeName="Sucursal_2Model.DetallexFactura">
+              <MappingFragment StoreEntitySet="DetallexFactura">
+                <ScalarProperty Name="idDetallexFactura" ColumnName="idDetallexFactura" />
+                <ScalarProperty Name="idDetalle" ColumnName="idDetalle" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoxSucursals">
+            <EntityTypeMapping TypeName="Sucursal_2Model.EmpleadoxSucursal">
+              <MappingFragment StoreEntitySet="EmpleadoxSucursal">
+                <ScalarProperty Name="idEmpleadoxSucursal" ColumnName="idEmpleadoxSucursal" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+                <ScalarProperty Name="fechaContratacion" ColumnName="fechaContratacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Factura">
+              <MappingFragment StoreEntitySet="Factura">
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Financiamientoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Financiamiento">
+              <MappingFragment StoreEntitySet="Financiamiento">
+                <ScalarProperty Name="idFinanciamiento" ColumnName="idFinanciamiento" />
+                <ScalarProperty Name="tasaInteres" ColumnName="tasaInteres" />
+                <ScalarProperty Name="plazo" ColumnName="plazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pagoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="idPago" ColumnName="idPago" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagoxClientexFinanciamientoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.PagoxClientexFinanciamiento">
+              <MappingFragment StoreEntitySet="PagoxClientexFinanciamiento">
+                <ScalarProperty Name="idPagoxClientexFinanciamiento" ColumnName="idPagoxClientexFinanciamiento" />
+                <ScalarProperty Name="idPago" ColumnName="idPago" />
+                <ScalarProperty Name="idClientexFinanciamiento" ColumnName="idClientexFinanciamiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursals">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+                <ScalarProperty Name="horaEntrada" ColumnName="horaEntrada" />
+                <ScalarProperty Name="horaSalida" ColumnName="horaSalida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SucursalUbicacions">
+            <EntityTypeMapping TypeName="Sucursal_2Model.SucursalUbicacion">
+              <MappingFragment StoreEntitySet="SucursalUbicacion">
+                <ScalarProperty Name="idSucursalUbicacion" ColumnName="idSucursalUbicacion" />
+                <ScalarProperty Name="idSucursal" ColumnName="idSucursal" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+                <ScalarProperty Name="pais" ColumnName="pais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipoPagoes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.tipoPago">
+              <MappingFragment StoreEntitySet="tipoPago">
+                <ScalarProperty Name="idTipoPago" ColumnName="idTipoPago" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ventas">
+            <EntityTypeMapping TypeName="Sucursal_2Model.Venta">
+              <MappingFragment StoreEntitySet="Venta">
+                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+                <ScalarProperty Name="idTipoPago" ColumnName="idTipoPago" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VentasxClientes">
+            <EntityTypeMapping TypeName="Sucursal_2Model.VentasxCliente">
+              <MappingFragment StoreEntitySet="VentasxCliente">
+                <ScalarProperty Name="idVentaxCliente" ColumnName="idVentaxCliente" />
+                <ScalarProperty Name="idVenta" ColumnName="idVenta" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarSucursal_2" FunctionName="Sucursal_2Model.Store.spAgregarSucursal_2" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

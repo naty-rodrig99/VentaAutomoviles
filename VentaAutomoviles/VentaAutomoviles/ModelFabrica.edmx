@@ -1,0 +1,1199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FabricaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Automovil">
+          <Key>
+            <PropertyRef Name="idAutomovil" />
+          </Key>
+          <Property Name="idAutomovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipoAutomovil" Type="int" Nullable="false" />
+          <Property Name="idTipoCombustible" Type="int" Nullable="false" />
+          <Property Name="placa" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="precioBase" Type="money" Nullable="false" />
+          <Property Name="consignacion" Type="bit" Nullable="false" />
+          <Property Name="anno" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Caracteristicas">
+          <Key>
+            <PropertyRef Name="idCaracteristica" />
+          </Key>
+          <Property Name="idCaracteristica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="color" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cantidadPasajeros" Type="int" Nullable="false" />
+          <Property Name="nPuertas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CaracteristicasxAutomovil">
+          <Key>
+            <PropertyRef Name="idCaracteristicasxAutomovil" />
+          </Key>
+          <Property Name="idCaracteristicasxAutomovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCaracteristica" Type="int" Nullable="false" />
+          <Property Name="idAutomovil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="edad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClienteCredenciales">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuario" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="contraseña" Type="varchar" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClienteUbicacion">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ubicacion" Type="geometry" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpleadoFabrica">
+          <Key>
+            <PropertyRef Name="idEmpleadoFabrica" />
+          </Key>
+          <Property Name="idEmpleadoFabrica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFabrica" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="telefono" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extra">
+          <Key>
+            <PropertyRef Name="idExtra" />
+          </Key>
+          <Property Name="idExtra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="precio" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExtraxAutomovil">
+          <Key>
+            <PropertyRef Name="idExtraxAutomovil" />
+          </Key>
+          <Property Name="idExtraxAutomovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idExtra" Type="int" Nullable="false" />
+          <Property Name="idAutomovil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fabrica">
+          <Key>
+            <PropertyRef Name="idFabrica" />
+          </Key>
+          <Property Name="idFabrica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="idFoto" />
+          </Key>
+          <Property Name="idFoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="foto" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FotoxAutomovil">
+          <Key>
+            <PropertyRef Name="idFotoxAutomovil" />
+          </Key>
+          <Property Name="idFotoxAutomovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFoto" Type="int" Nullable="false" />
+          <Property Name="idAutomovil" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal1">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFabrica" Type="int" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="fechaPedido" Type="date" Nullable="false" />
+          <Property Name="fechaEntrega" Type="date" Nullable="false" />
+          <Property Name="despacho" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal2">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFabrica" Type="int" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="fechaPedido" Type="date" Nullable="false" />
+          <Property Name="fechaEntrega" Type="date" Nullable="false" />
+          <Property Name="despacho" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal3">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idFabrica" Type="int" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="fechaPedido" Type="date" Nullable="false" />
+          <Property Name="fechaEntrega" Type="date" Nullable="false" />
+          <Property Name="despacho" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoAutomovil">
+          <Key>
+            <PropertyRef Name="idTipoAutomovil" />
+          </Key>
+          <Property Name="idTipoAutomovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoCombustible">
+          <Key>
+            <PropertyRef Name="idTipoCombustible" />
+          </Key>
+          <Property Name="idTipoCombustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Automovil_TipoAutomovil">
+          <End Role="TipoAutomovil" Type="Self.TipoAutomovil" Multiplicity="1" />
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAutomovil">
+              <PropertyRef Name="idTipoAutomovil" />
+            </Principal>
+            <Dependent Role="Automovil">
+              <PropertyRef Name="idTipoAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Automovil_TipoCombustible">
+          <End Role="TipoCombustible" Type="Self.TipoCombustible" Multiplicity="1" />
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCombustible">
+              <PropertyRef Name="idTipoCombustible" />
+            </Principal>
+            <Dependent Role="Automovil">
+              <PropertyRef Name="idTipoCombustible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaracteristicasxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="CaracteristicasxAutomovil" Type="Self.CaracteristicasxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="CaracteristicasxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaracteristicasxAutomovil_Caracteristicas">
+          <End Role="Caracteristicas" Type="Self.Caracteristicas" Multiplicity="1" />
+          <End Role="CaracteristicasxAutomovil" Type="Self.CaracteristicasxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristicas">
+              <PropertyRef Name="idCaracteristica" />
+            </Principal>
+            <Dependent Role="CaracteristicasxAutomovil">
+              <PropertyRef Name="idCaracteristica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoFabrica_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="EmpleadoFabrica" Type="Self.EmpleadoFabrica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="EmpleadoFabrica">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="ExtraxAutomovil" Type="Self.ExtraxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="ExtraxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraxAutomovil_Extra">
+          <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
+          <End Role="ExtraxAutomovil" Type="Self.ExtraxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Extra">
+              <PropertyRef Name="idExtra" />
+            </Principal>
+            <Dependent Role="ExtraxAutomovil">
+              <PropertyRef Name="idExtra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="FotoxAutomovil" Type="Self.FotoxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="FotoxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoxAutomovil_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="FotoxAutomovil" Type="Self.FotoxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="idFoto" />
+            </Principal>
+            <Dependent Role="FotoxAutomovil">
+              <PropertyRef Name="idFoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal1_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal1" Type="Self.PedidoSucursal1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal1">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal1_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal1" Type="Self.PedidoSucursal1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal1">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal2_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal2" Type="Self.PedidoSucursal2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal2">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal2_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal2" Type="Self.PedidoSucursal2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal2">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal3_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal3" Type="Self.PedidoSucursal3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal3">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal3_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal3" Type="Self.PedidoSucursal3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal3">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spActualizarPrecioAutomovil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAutomovil" Type="int" Mode="In" />
+          <Parameter Name="precioBase" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spActualizarPrecioExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idExtra" Type="int" Mode="In" />
+          <Parameter Name="precio" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spAgregarAutomovil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idTipoAutomovil" Type="int" Mode="In" />
+          <Parameter Name="idTipoCombustible" Type="int" Mode="In" />
+          <Parameter Name="placa" Type="varchar" Mode="In" />
+          <Parameter Name="precioBase" Type="money" Mode="In" />
+          <Parameter Name="consignacion" Type="bit" Mode="In" />
+          <Parameter Name="anno" Type="int" Mode="In" />
+          <Parameter Name="idCaracteristicas" Type="int" Mode="In" />
+          <Parameter Name="idSucursal" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAgregarCaracteristica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="color" Type="varchar" Mode="In" />
+          <Parameter Name="marca" Type="varchar" Mode="In" />
+          <Parameter Name="cantidadPasajeros" Type="int" Mode="In" />
+          <Parameter Name="nPuertas" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spAgregarExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="precio" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spAgregarPedido" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSucursal" Type="int" Mode="In" />
+          <Parameter Name="idFabrica" Type="int" Mode="In" />
+          <Parameter Name="idAutomovilxSucursal" Type="int" Mode="In" />
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="fechaPedido" Type="date" Mode="In" />
+          <Parameter Name="fechaEntrega" Type="date" Mode="In" />
+          <Parameter Name="despacho" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spAgregarTipoAutomovil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAgregarTipoCombustible" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spConsultarDescuento10P" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idCliente" Type="int" Mode="In" />
+          <Parameter Name="idSucursal" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spConsultarPrecioAutomovil" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAutomovil" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spConsultarPrecioExtra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idExtra" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spVerAutoNoSalidaxSucursal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSucursal" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="FabricaModelStoreContainer">
+          <EntitySet Name="Automovil" EntityType="Self.Automovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Caracteristicas" EntityType="Self.Caracteristicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CaracteristicasxAutomovil" EntityType="Self.CaracteristicasxAutomovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClienteCredenciales" EntityType="Self.ClienteCredenciales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClienteUbicacion" EntityType="Self.ClienteUbicacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpleadoFabrica" EntityType="Self.EmpleadoFabrica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Extra" EntityType="Self.Extra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExtraxAutomovil" EntityType="Self.ExtraxAutomovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fabrica" EntityType="Self.Fabrica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FotoxAutomovil" EntityType="Self.FotoxAutomovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoSucursal1" EntityType="Self.PedidoSucursal1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoSucursal2" EntityType="Self.PedidoSucursal2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoSucursal3" EntityType="Self.PedidoSucursal3" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoAutomovil" EntityType="Self.TipoAutomovil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoCombustible" EntityType="Self.TipoCombustible" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Automovil_TipoAutomovil" Association="Self.FK_Automovil_TipoAutomovil">
+            <End Role="TipoAutomovil" EntitySet="TipoAutomovil" />
+            <End Role="Automovil" EntitySet="Automovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Automovil_TipoCombustible" Association="Self.FK_Automovil_TipoCombustible">
+            <End Role="TipoCombustible" EntitySet="TipoCombustible" />
+            <End Role="Automovil" EntitySet="Automovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaracteristicasxAutomovil_Automovil" Association="Self.FK_CaracteristicasxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovil" />
+            <End Role="CaracteristicasxAutomovil" EntitySet="CaracteristicasxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaracteristicasxAutomovil_Caracteristicas" Association="Self.FK_CaracteristicasxAutomovil_Caracteristicas">
+            <End Role="Caracteristicas" EntitySet="Caracteristicas" />
+            <End Role="CaracteristicasxAutomovil" EntitySet="CaracteristicasxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoFabrica_Fabrica" Association="Self.FK_EmpleadoFabrica_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="EmpleadoFabrica" EntitySet="EmpleadoFabrica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraxAutomovil_Automovil" Association="Self.FK_ExtraxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovil" />
+            <End Role="ExtraxAutomovil" EntitySet="ExtraxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraxAutomovil_Extra" Association="Self.FK_ExtraxAutomovil_Extra">
+            <End Role="Extra" EntitySet="Extra" />
+            <End Role="ExtraxAutomovil" EntitySet="ExtraxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoxAutomovil_Automovil" Association="Self.FK_FotoxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovil" />
+            <End Role="FotoxAutomovil" EntitySet="FotoxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoxAutomovil_Foto" Association="Self.FK_FotoxAutomovil_Foto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="FotoxAutomovil" EntitySet="FotoxAutomovil" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal1_Cliente" Association="Self.FK_PedidoSucursal1_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PedidoSucursal1" EntitySet="PedidoSucursal1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal1_Fabrica" Association="Self.FK_PedidoSucursal1_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="PedidoSucursal1" EntitySet="PedidoSucursal1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal2_Cliente" Association="Self.FK_PedidoSucursal2_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PedidoSucursal2" EntitySet="PedidoSucursal2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal2_Fabrica" Association="Self.FK_PedidoSucursal2_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="PedidoSucursal2" EntitySet="PedidoSucursal2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal3_Cliente" Association="Self.FK_PedidoSucursal3_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="PedidoSucursal3" EntitySet="PedidoSucursal3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal3_Fabrica" Association="Self.FK_PedidoSucursal3_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabrica" />
+            <End Role="PedidoSucursal3" EntitySet="PedidoSucursal3" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FabricaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Automovil">
+          <Key>
+            <PropertyRef Name="idAutomovil" />
+          </Key>
+          <Property Name="idAutomovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipoAutomovil" Type="Int32" Nullable="false" />
+          <Property Name="idTipoCombustible" Type="Int32" Nullable="false" />
+          <Property Name="placa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precioBase" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="consignacion" Type="Boolean" Nullable="false" />
+          <Property Name="anno" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TipoAutomovil" Relationship="Self.FK_Automovil_TipoAutomovil" FromRole="Automovil" ToRole="TipoAutomovil" />
+          <NavigationProperty Name="TipoCombustible" Relationship="Self.FK_Automovil_TipoCombustible" FromRole="Automovil" ToRole="TipoCombustible" />
+          <NavigationProperty Name="CaracteristicasxAutomovils" Relationship="Self.FK_CaracteristicasxAutomovil_Automovil" FromRole="Automovil" ToRole="CaracteristicasxAutomovil" />
+          <NavigationProperty Name="ExtraxAutomovils" Relationship="Self.FK_ExtraxAutomovil_Automovil" FromRole="Automovil" ToRole="ExtraxAutomovil" />
+          <NavigationProperty Name="FotoxAutomovils" Relationship="Self.FK_FotoxAutomovil_Automovil" FromRole="Automovil" ToRole="FotoxAutomovil" />
+        </EntityType>
+        <EntityType Name="Caracteristica">
+          <Key>
+            <PropertyRef Name="idCaracteristica" />
+          </Key>
+          <Property Name="idCaracteristica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cantidadPasajeros" Type="Int32" Nullable="false" />
+          <Property Name="nPuertas" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CaracteristicasxAutomovils" Relationship="Self.FK_CaracteristicasxAutomovil_Caracteristicas" FromRole="Caracteristicas" ToRole="CaracteristicasxAutomovil" />
+        </EntityType>
+        <EntityType Name="CaracteristicasxAutomovil">
+          <Key>
+            <PropertyRef Name="idCaracteristicasxAutomovil" />
+          </Key>
+          <Property Name="idCaracteristicasxAutomovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCaracteristica" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Automovil" Relationship="Self.FK_CaracteristicasxAutomovil_Automovil" FromRole="CaracteristicasxAutomovil" ToRole="Automovil" />
+          <NavigationProperty Name="Caracteristica" Relationship="Self.FK_CaracteristicasxAutomovil_Caracteristicas" FromRole="CaracteristicasxAutomovil" ToRole="Caracteristicas" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="edad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PedidoSucursal1" Relationship="Self.FK_PedidoSucursal1_Cliente" FromRole="Cliente" ToRole="PedidoSucursal1" />
+          <NavigationProperty Name="PedidoSucursal2" Relationship="Self.FK_PedidoSucursal2_Cliente" FromRole="Cliente" ToRole="PedidoSucursal2" />
+          <NavigationProperty Name="PedidoSucursal3" Relationship="Self.FK_PedidoSucursal3_Cliente" FromRole="Cliente" ToRole="PedidoSucursal3" />
+        </EntityType>
+        <EntityType Name="ClienteCredenciale">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClienteUbicacion">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ubicacion" Type="Geometry" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpleadoFabrica">
+          <Key>
+            <PropertyRef Name="idEmpleadoFabrica" />
+          </Key>
+          <Property Name="idEmpleadoFabrica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFabrica" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Fabrica" Relationship="Self.FK_EmpleadoFabrica_Fabrica" FromRole="EmpleadoFabrica" ToRole="Fabrica" />
+        </EntityType>
+        <EntityType Name="Extra">
+          <Key>
+            <PropertyRef Name="idExtra" />
+          </Key>
+          <Property Name="idExtra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="ExtraxAutomovils" Relationship="Self.FK_ExtraxAutomovil_Extra" FromRole="Extra" ToRole="ExtraxAutomovil" />
+        </EntityType>
+        <EntityType Name="ExtraxAutomovil">
+          <Key>
+            <PropertyRef Name="idExtraxAutomovil" />
+          </Key>
+          <Property Name="idExtraxAutomovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idExtra" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Automovil" Relationship="Self.FK_ExtraxAutomovil_Automovil" FromRole="ExtraxAutomovil" ToRole="Automovil" />
+          <NavigationProperty Name="Extra" Relationship="Self.FK_ExtraxAutomovil_Extra" FromRole="ExtraxAutomovil" ToRole="Extra" />
+        </EntityType>
+        <EntityType Name="Fabrica">
+          <Key>
+            <PropertyRef Name="idFabrica" />
+          </Key>
+          <Property Name="idFabrica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="direccion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="EmpleadoFabricas" Relationship="Self.FK_EmpleadoFabrica_Fabrica" FromRole="Fabrica" ToRole="EmpleadoFabrica" />
+          <NavigationProperty Name="PedidoSucursal1" Relationship="Self.FK_PedidoSucursal1_Fabrica" FromRole="Fabrica" ToRole="PedidoSucursal1" />
+          <NavigationProperty Name="PedidoSucursal2" Relationship="Self.FK_PedidoSucursal2_Fabrica" FromRole="Fabrica" ToRole="PedidoSucursal2" />
+          <NavigationProperty Name="PedidoSucursal3" Relationship="Self.FK_PedidoSucursal3_Fabrica" FromRole="Fabrica" ToRole="PedidoSucursal3" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="idFoto" />
+          </Key>
+          <Property Name="idFoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="foto1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="FotoxAutomovils" Relationship="Self.FK_FotoxAutomovil_Foto" FromRole="Foto" ToRole="FotoxAutomovil" />
+        </EntityType>
+        <EntityType Name="FotoxAutomovil">
+          <Key>
+            <PropertyRef Name="idFotoxAutomovil" />
+          </Key>
+          <Property Name="idFotoxAutomovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFoto" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovil" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Automovil" Relationship="Self.FK_FotoxAutomovil_Automovil" FromRole="FotoxAutomovil" ToRole="Automovil" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_FotoxAutomovil_Foto" FromRole="FotoxAutomovil" ToRole="Foto" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal1">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFabrica" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="fechaPedido" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaEntrega" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="despacho" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_PedidoSucursal1_Cliente" FromRole="PedidoSucursal1" ToRole="Cliente" />
+          <NavigationProperty Name="Fabrica" Relationship="Self.FK_PedidoSucursal1_Fabrica" FromRole="PedidoSucursal1" ToRole="Fabrica" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal2">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFabrica" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="fechaPedido" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaEntrega" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="despacho" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_PedidoSucursal2_Cliente" FromRole="PedidoSucursal2" ToRole="Cliente" />
+          <NavigationProperty Name="Fabrica" Relationship="Self.FK_PedidoSucursal2_Fabrica" FromRole="PedidoSucursal2" ToRole="Fabrica" />
+        </EntityType>
+        <EntityType Name="PedidoSucursal3">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFabrica" Type="Int32" Nullable="false" />
+          <Property Name="idAutomovilxSucursal" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="fechaPedido" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fechaEntrega" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="despacho" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_PedidoSucursal3_Cliente" FromRole="PedidoSucursal3" ToRole="Cliente" />
+          <NavigationProperty Name="Fabrica" Relationship="Self.FK_PedidoSucursal3_Fabrica" FromRole="PedidoSucursal3" ToRole="Fabrica" />
+        </EntityType>
+        <EntityType Name="TipoAutomovil">
+          <Key>
+            <PropertyRef Name="idTipoAutomovil" />
+          </Key>
+          <Property Name="idTipoAutomovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Automovils" Relationship="Self.FK_Automovil_TipoAutomovil" FromRole="TipoAutomovil" ToRole="Automovil" />
+        </EntityType>
+        <EntityType Name="TipoCombustible">
+          <Key>
+            <PropertyRef Name="idTipoCombustible" />
+          </Key>
+          <Property Name="idTipoCombustible" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Automovils" Relationship="Self.FK_Automovil_TipoCombustible" FromRole="TipoCombustible" ToRole="Automovil" />
+        </EntityType>
+        <Association Name="FK_Automovil_TipoAutomovil">
+          <End Role="TipoAutomovil" Type="Self.TipoAutomovil" Multiplicity="1" />
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoAutomovil">
+              <PropertyRef Name="idTipoAutomovil" />
+            </Principal>
+            <Dependent Role="Automovil">
+              <PropertyRef Name="idTipoAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Automovil_TipoCombustible">
+          <End Role="TipoCombustible" Type="Self.TipoCombustible" Multiplicity="1" />
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoCombustible">
+              <PropertyRef Name="idTipoCombustible" />
+            </Principal>
+            <Dependent Role="Automovil">
+              <PropertyRef Name="idTipoCombustible" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaracteristicasxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="CaracteristicasxAutomovil" Type="Self.CaracteristicasxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="CaracteristicasxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="ExtraxAutomovil" Type="Self.ExtraxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="ExtraxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoxAutomovil_Automovil">
+          <End Role="Automovil" Type="Self.Automovil" Multiplicity="1" />
+          <End Role="FotoxAutomovil" Type="Self.FotoxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Automovil">
+              <PropertyRef Name="idAutomovil" />
+            </Principal>
+            <Dependent Role="FotoxAutomovil">
+              <PropertyRef Name="idAutomovil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CaracteristicasxAutomovil_Caracteristicas">
+          <End Role="Caracteristicas" Type="Self.Caracteristica" Multiplicity="1" />
+          <End Role="CaracteristicasxAutomovil" Type="Self.CaracteristicasxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caracteristicas">
+              <PropertyRef Name="idCaracteristica" />
+            </Principal>
+            <Dependent Role="CaracteristicasxAutomovil">
+              <PropertyRef Name="idCaracteristica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal1_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal1" Type="Self.PedidoSucursal1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal1">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal2_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal2" Type="Self.PedidoSucursal2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal2">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal3_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="PedidoSucursal3" Type="Self.PedidoSucursal3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="PedidoSucursal3">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmpleadoFabrica_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="EmpleadoFabrica" Type="Self.EmpleadoFabrica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="EmpleadoFabrica">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraxAutomovil_Extra">
+          <End Role="Extra" Type="Self.Extra" Multiplicity="1" />
+          <End Role="ExtraxAutomovil" Type="Self.ExtraxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Extra">
+              <PropertyRef Name="idExtra" />
+            </Principal>
+            <Dependent Role="ExtraxAutomovil">
+              <PropertyRef Name="idExtra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal1_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal1" Type="Self.PedidoSucursal1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal1">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal2_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal2" Type="Self.PedidoSucursal2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal2">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoSucursal3_Fabrica">
+          <End Role="Fabrica" Type="Self.Fabrica" Multiplicity="1" />
+          <End Role="PedidoSucursal3" Type="Self.PedidoSucursal3" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fabrica">
+              <PropertyRef Name="idFabrica" />
+            </Principal>
+            <Dependent Role="PedidoSucursal3">
+              <PropertyRef Name="idFabrica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoxAutomovil_Foto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="FotoxAutomovil" Type="Self.FotoxAutomovil" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="idFoto" />
+            </Principal>
+            <Dependent Role="FotoxAutomovil">
+              <PropertyRef Name="idFoto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FabricaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Automovils" EntityType="Self.Automovil" />
+          <EntitySet Name="Caracteristicas" EntityType="Self.Caracteristica" />
+          <EntitySet Name="CaracteristicasxAutomovils" EntityType="Self.CaracteristicasxAutomovil" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="ClienteCredenciales" EntityType="Self.ClienteCredenciale" />
+          <EntitySet Name="ClienteUbicacions" EntityType="Self.ClienteUbicacion" />
+          <EntitySet Name="EmpleadoFabricas" EntityType="Self.EmpleadoFabrica" />
+          <EntitySet Name="Extras" EntityType="Self.Extra" />
+          <EntitySet Name="ExtraxAutomovils" EntityType="Self.ExtraxAutomovil" />
+          <EntitySet Name="Fabricas" EntityType="Self.Fabrica" />
+          <EntitySet Name="Fotoes" EntityType="Self.Foto" />
+          <EntitySet Name="FotoxAutomovils" EntityType="Self.FotoxAutomovil" />
+          <EntitySet Name="PedidoSucursal1" EntityType="Self.PedidoSucursal1" />
+          <EntitySet Name="PedidoSucursal2" EntityType="Self.PedidoSucursal2" />
+          <EntitySet Name="PedidoSucursal3" EntityType="Self.PedidoSucursal3" />
+          <EntitySet Name="TipoAutomovils" EntityType="Self.TipoAutomovil" />
+          <EntitySet Name="TipoCombustibles" EntityType="Self.TipoCombustible" />
+          <AssociationSet Name="FK_Automovil_TipoAutomovil" Association="Self.FK_Automovil_TipoAutomovil">
+            <End Role="TipoAutomovil" EntitySet="TipoAutomovils" />
+            <End Role="Automovil" EntitySet="Automovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Automovil_TipoCombustible" Association="Self.FK_Automovil_TipoCombustible">
+            <End Role="TipoCombustible" EntitySet="TipoCombustibles" />
+            <End Role="Automovil" EntitySet="Automovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaracteristicasxAutomovil_Automovil" Association="Self.FK_CaracteristicasxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovils" />
+            <End Role="CaracteristicasxAutomovil" EntitySet="CaracteristicasxAutomovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraxAutomovil_Automovil" Association="Self.FK_ExtraxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovils" />
+            <End Role="ExtraxAutomovil" EntitySet="ExtraxAutomovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoxAutomovil_Automovil" Association="Self.FK_FotoxAutomovil_Automovil">
+            <End Role="Automovil" EntitySet="Automovils" />
+            <End Role="FotoxAutomovil" EntitySet="FotoxAutomovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CaracteristicasxAutomovil_Caracteristicas" Association="Self.FK_CaracteristicasxAutomovil_Caracteristicas">
+            <End Role="Caracteristicas" EntitySet="Caracteristicas" />
+            <End Role="CaracteristicasxAutomovil" EntitySet="CaracteristicasxAutomovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal1_Cliente" Association="Self.FK_PedidoSucursal1_Cliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="PedidoSucursal1" EntitySet="PedidoSucursal1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal2_Cliente" Association="Self.FK_PedidoSucursal2_Cliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="PedidoSucursal2" EntitySet="PedidoSucursal2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal3_Cliente" Association="Self.FK_PedidoSucursal3_Cliente">
+            <End Role="Cliente" EntitySet="Clientes" />
+            <End Role="PedidoSucursal3" EntitySet="PedidoSucursal3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmpleadoFabrica_Fabrica" Association="Self.FK_EmpleadoFabrica_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabricas" />
+            <End Role="EmpleadoFabrica" EntitySet="EmpleadoFabricas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraxAutomovil_Extra" Association="Self.FK_ExtraxAutomovil_Extra">
+            <End Role="Extra" EntitySet="Extras" />
+            <End Role="ExtraxAutomovil" EntitySet="ExtraxAutomovils" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal1_Fabrica" Association="Self.FK_PedidoSucursal1_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabricas" />
+            <End Role="PedidoSucursal1" EntitySet="PedidoSucursal1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal2_Fabrica" Association="Self.FK_PedidoSucursal2_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabricas" />
+            <End Role="PedidoSucursal2" EntitySet="PedidoSucursal2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoSucursal3_Fabrica" Association="Self.FK_PedidoSucursal3_Fabrica">
+            <End Role="Fabrica" EntitySet="Fabricas" />
+            <End Role="PedidoSucursal3" EntitySet="PedidoSucursal3" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoxAutomovil_Foto" Association="Self.FK_FotoxAutomovil_Foto">
+            <End Role="Foto" EntitySet="Fotoes" />
+            <End Role="FotoxAutomovil" EntitySet="FotoxAutomovils" />
+          </AssociationSet>
+          <FunctionImport Name="spActualizarPrecioAutomovil">
+            <Parameter Name="idAutomovil" Mode="In" Type="Int32" />
+            <Parameter Name="precioBase" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spActualizarPrecioExtra">
+            <Parameter Name="idExtra" Mode="In" Type="Int32" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarAutomovil">
+            <Parameter Name="idTipoAutomovil" Mode="In" Type="Int32" />
+            <Parameter Name="idTipoCombustible" Mode="In" Type="Int32" />
+            <Parameter Name="placa" Mode="In" Type="String" />
+            <Parameter Name="precioBase" Mode="In" Type="Decimal" />
+            <Parameter Name="consignacion" Mode="In" Type="Boolean" />
+            <Parameter Name="anno" Mode="In" Type="Int32" />
+            <Parameter Name="idCaracteristicas" Mode="In" Type="Int32" />
+            <Parameter Name="idSucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarCaracteristica">
+            <Parameter Name="color" Mode="In" Type="String" />
+            <Parameter Name="marca" Mode="In" Type="String" />
+            <Parameter Name="cantidadPasajeros" Mode="In" Type="Int32" />
+            <Parameter Name="nPuertas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarExtra">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="precio" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarPedido">
+            <Parameter Name="idSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="idFabrica" Mode="In" Type="Int32" />
+            <Parameter Name="idAutomovilxSucursal" Mode="In" Type="Int32" />
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="fechaPedido" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaEntrega" Mode="In" Type="DateTime" />
+            <Parameter Name="despacho" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarTipoAutomovil">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarTipoCombustible">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spConsultarDescuento10P">
+            <Parameter Name="idCliente" Mode="In" Type="Int32" />
+            <Parameter Name="idSucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spConsultarPrecioAutomovil" ReturnType="Collection(Decimal)">
+            <Parameter Name="idAutomovil" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spConsultarPrecioExtra" ReturnType="Collection(Decimal)">
+            <Parameter Name="idExtra" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spVerAutoNoSalidaxSucursal" ReturnType="Collection(Int32)">
+            <Parameter Name="idSucursal" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FabricaModelStoreContainer" CdmEntityContainer="FabricaEntities">
+          <EntitySetMapping Name="Automovils">
+            <EntityTypeMapping TypeName="FabricaModel.Automovil">
+              <MappingFragment StoreEntitySet="Automovil">
+                <ScalarProperty Name="idAutomovil" ColumnName="idAutomovil" />
+                <ScalarProperty Name="idTipoAutomovil" ColumnName="idTipoAutomovil" />
+                <ScalarProperty Name="idTipoCombustible" ColumnName="idTipoCombustible" />
+                <ScalarProperty Name="placa" ColumnName="placa" />
+                <ScalarProperty Name="precioBase" ColumnName="precioBase" />
+                <ScalarProperty Name="consignacion" ColumnName="consignacion" />
+                <ScalarProperty Name="anno" ColumnName="anno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Caracteristicas">
+            <EntityTypeMapping TypeName="FabricaModel.Caracteristica">
+              <MappingFragment StoreEntitySet="Caracteristicas">
+                <ScalarProperty Name="idCaracteristica" ColumnName="idCaracteristica" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="cantidadPasajeros" ColumnName="cantidadPasajeros" />
+                <ScalarProperty Name="nPuertas" ColumnName="nPuertas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CaracteristicasxAutomovils">
+            <EntityTypeMapping TypeName="FabricaModel.CaracteristicasxAutomovil">
+              <MappingFragment StoreEntitySet="CaracteristicasxAutomovil">
+                <ScalarProperty Name="idCaracteristicasxAutomovil" ColumnName="idCaracteristicasxAutomovil" />
+                <ScalarProperty Name="idCaracteristica" ColumnName="idCaracteristica" />
+                <ScalarProperty Name="idAutomovil" ColumnName="idAutomovil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="FabricaModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClienteCredenciales">
+            <EntityTypeMapping TypeName="FabricaModel.ClienteCredenciale">
+              <MappingFragment StoreEntitySet="ClienteCredenciales">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClienteUbicacions">
+            <EntityTypeMapping TypeName="FabricaModel.ClienteUbicacion">
+              <MappingFragment StoreEntitySet="ClienteUbicacion">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="ubicacion" ColumnName="ubicacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpleadoFabricas">
+            <EntityTypeMapping TypeName="FabricaModel.EmpleadoFabrica">
+              <MappingFragment StoreEntitySet="EmpleadoFabrica">
+                <ScalarProperty Name="idEmpleadoFabrica" ColumnName="idEmpleadoFabrica" />
+                <ScalarProperty Name="idFabrica" ColumnName="idFabrica" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Extras">
+            <EntityTypeMapping TypeName="FabricaModel.Extra">
+              <MappingFragment StoreEntitySet="Extra">
+                <ScalarProperty Name="idExtra" ColumnName="idExtra" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExtraxAutomovils">
+            <EntityTypeMapping TypeName="FabricaModel.ExtraxAutomovil">
+              <MappingFragment StoreEntitySet="ExtraxAutomovil">
+                <ScalarProperty Name="idExtraxAutomovil" ColumnName="idExtraxAutomovil" />
+                <ScalarProperty Name="idExtra" ColumnName="idExtra" />
+                <ScalarProperty Name="idAutomovil" ColumnName="idAutomovil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fabricas">
+            <EntityTypeMapping TypeName="FabricaModel.Fabrica">
+              <MappingFragment StoreEntitySet="Fabrica">
+                <ScalarProperty Name="idFabrica" ColumnName="idFabrica" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fotoes">
+            <EntityTypeMapping TypeName="FabricaModel.Foto">
+              <MappingFragment StoreEntitySet="Foto">
+                <ScalarProperty Name="idFoto" ColumnName="idFoto" />
+                <ScalarProperty Name="foto1" ColumnName="foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FotoxAutomovils">
+            <EntityTypeMapping TypeName="FabricaModel.FotoxAutomovil">
+              <MappingFragment StoreEntitySet="FotoxAutomovil">
+                <ScalarProperty Name="idFotoxAutomovil" ColumnName="idFotoxAutomovil" />
+                <ScalarProperty Name="idFoto" ColumnName="idFoto" />
+                <ScalarProperty Name="idAutomovil" ColumnName="idAutomovil" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoSucursal1">
+            <EntityTypeMapping TypeName="FabricaModel.PedidoSucursal1">
+              <MappingFragment StoreEntitySet="PedidoSucursal1">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idFabrica" ColumnName="idFabrica" />
+                <ScalarProperty Name="idAutomovilxSucursal" ColumnName="idAutomovilxSucursal" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />
+                <ScalarProperty Name="despacho" ColumnName="despacho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoSucursal2">
+            <EntityTypeMapping TypeName="FabricaModel.PedidoSucursal2">
+              <MappingFragment StoreEntitySet="PedidoSucursal2">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idFabrica" ColumnName="idFabrica" />
+                <ScalarProperty Name="idAutomovilxSucursal" ColumnName="idAutomovilxSucursal" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />
+                <ScalarProperty Name="despacho" ColumnName="despacho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoSucursal3">
+            <EntityTypeMapping TypeName="FabricaModel.PedidoSucursal3">
+              <MappingFragment StoreEntitySet="PedidoSucursal3">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idFabrica" ColumnName="idFabrica" />
+                <ScalarProperty Name="idAutomovilxSucursal" ColumnName="idAutomovilxSucursal" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="fechaPedido" ColumnName="fechaPedido" />
+                <ScalarProperty Name="fechaEntrega" ColumnName="fechaEntrega" />
+                <ScalarProperty Name="despacho" ColumnName="despacho" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoAutomovils">
+            <EntityTypeMapping TypeName="FabricaModel.TipoAutomovil">
+              <MappingFragment StoreEntitySet="TipoAutomovil">
+                <ScalarProperty Name="idTipoAutomovil" ColumnName="idTipoAutomovil" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoCombustibles">
+            <EntityTypeMapping TypeName="FabricaModel.TipoCombustible">
+              <MappingFragment StoreEntitySet="TipoCombustible">
+                <ScalarProperty Name="idTipoCombustible" ColumnName="idTipoCombustible" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spActualizarPrecioAutomovil" FunctionName="FabricaModel.Store.spActualizarPrecioAutomovil" />
+          <FunctionImportMapping FunctionImportName="spActualizarPrecioExtra" FunctionName="FabricaModel.Store.spActualizarPrecioExtra" />
+          <FunctionImportMapping FunctionImportName="spAgregarAutomovil" FunctionName="FabricaModel.Store.spAgregarAutomovil" />
+          <FunctionImportMapping FunctionImportName="spAgregarCaracteristica" FunctionName="FabricaModel.Store.spAgregarCaracteristica" />
+          <FunctionImportMapping FunctionImportName="spAgregarExtra" FunctionName="FabricaModel.Store.spAgregarExtra" />
+          <FunctionImportMapping FunctionImportName="spAgregarPedido" FunctionName="FabricaModel.Store.spAgregarPedido" />
+          <FunctionImportMapping FunctionImportName="spAgregarTipoAutomovil" FunctionName="FabricaModel.Store.spAgregarTipoAutomovil" />
+          <FunctionImportMapping FunctionImportName="spAgregarTipoCombustible" FunctionName="FabricaModel.Store.spAgregarTipoCombustible" />
+          <FunctionImportMapping FunctionImportName="spConsultarDescuento10P" FunctionName="FabricaModel.Store.spConsultarDescuento10P" />
+          <FunctionImportMapping FunctionImportName="spConsultarPrecioAutomovil" FunctionName="FabricaModel.Store.spConsultarPrecioAutomovil" />
+          <FunctionImportMapping FunctionImportName="spConsultarPrecioExtra" FunctionName="FabricaModel.Store.spConsultarPrecioExtra" />
+          <FunctionImportMapping FunctionImportName="spVerAutoNoSalidaxSucursal" FunctionName="FabricaModel.Store.spVerAutoNoSalidaxSucursal" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
